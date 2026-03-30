@@ -1,6 +1,23 @@
+import 'dart:async';
+
+import 'package:firstsample/loginpage.dart';
 import 'package:flutter/material.dart';
 
-class Firstpage extends StatelessWidget {
+class Firstpage extends StatefulWidget {
+  @override
+  State<Firstpage> createState() => _FirstpageState();
+}
+
+class _FirstpageState extends State<Firstpage> {
+
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 2), (){
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Loginpage()));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,10 +30,10 @@ class Firstpage extends StatelessWidget {
                 fit: BoxFit.fill,
                 image: NetworkImage("https://images.all-free-download.com/images/graphiclarge/gallery_display_background_12_vector_158738.jpg")
             )
-        //   gradient: LinearGradient(
-        //       begin: Alignment.topLeft,
-        //       end: AlignmentGeometry.bottomRight,
-        //       colors: [Colors.green,Colors.white,Colors.blue])
+          //   gradient: LinearGradient(
+          //       begin: Alignment.topLeft,
+          //       end: AlignmentGeometry.bottomRight,
+          //       colors: [Colors.green,Colors.white,Colors.blue])
         ),
         child: Center(
             child: Column(
