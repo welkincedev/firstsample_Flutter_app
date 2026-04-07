@@ -1,4 +1,11 @@
-import 'dart:ffi';
+import 'package:firstsample/widgetss/animatedText.dart';
+import 'package:firstsample/widgetss/listVieW/listView.dart';
+import 'package:firstsample/widgetss/listVieW/listViewCustom.dart';
+import 'package:firstsample/widgetss/listVieW/listViewThree.dart';
+import 'package:firstsample/widgetss/listVieW/listViewTwo.dart';
+import 'package:firstsample/widgetss/rowncoloumn.dart';
+import 'package:firstsample/widgetss/textex.dart';
+import 'package:firstsample/widgetss/nestedContainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -7,4 +14,4 @@ import 'Splashpage.dart';
 void main() =>
     runApp(MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Firstpage()));
+        home: ListViewCustom()));
