@@ -1,1 +1,1 @@
-![Reg Page](UIs/RP1.png)
+![Reg Page](assets/scshts/RP1.png)
