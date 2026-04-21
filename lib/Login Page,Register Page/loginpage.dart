@@ -17,7 +17,7 @@ class _LoginpageState extends State<Loginpage> {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/simple.jpg"),
+            image: AssetImage("assets/icon.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -71,8 +71,6 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                 ),
               ),
-
-
 
               Padding(
                 padding: const EdgeInsets.all(14.0),
