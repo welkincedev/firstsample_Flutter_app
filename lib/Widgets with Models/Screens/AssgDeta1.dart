@@ -89,7 +89,7 @@ class ProductDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              /// 🔖 TAG (like -20%, Hot Deal)
+
               Text(
                 product.words,
                 style: const TextStyle(
@@ -100,7 +100,6 @@ class ProductDetailsPage extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              /// 🔙 BUTTON
               ElevatedButton.icon(
                 icon: const Icon(Icons.arrow_back),
                 label: const Text("Go Back"),
@@ -115,3 +114,9 @@ class ProductDetailsPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+

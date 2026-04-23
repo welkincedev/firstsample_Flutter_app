@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   custom_clippers: ^2.0.4
   awesome_dialog: ^3.3.0
+  carousel_slider: ^5.1.2
+  carousel_custom_slider: ^0.1.0
 
 
 

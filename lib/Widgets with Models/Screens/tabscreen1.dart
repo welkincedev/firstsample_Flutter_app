@@ -93,7 +93,6 @@ class _TabScn1State extends State<TabScn1> {
             onPressed: () => _showSnackBarWithAction(context),
             icon: const Icon(Icons.notifications_active_sharp),
             label: const Text("SnackBar with Action"),
-
           ),
 
           const SizedBox(height: 12),
@@ -104,6 +103,17 @@ class _TabScn1State extends State<TabScn1> {
             label: const Text('Modal Bottom Sheet'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.indigo,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+            ),
+          ),
+          const SizedBox(height: 12),
+          ElevatedButton.icon(
+            onPressed: () => _showModelBottomSheetPersistent(context),
+            icon: const Icon(Icons.open_in_new),
+            label: const Text('Model Bottom Sheet 2'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.pink,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 12),
             ),
@@ -131,87 +141,83 @@ class _TabScn1State extends State<TabScn1> {
   void _showSimpleAlert(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialog(
-            title: Row(
-              children: const [
-                Icon(Icons.timelapse),
-                SizedBox(width: 8),
-                Text('Simple Alert'),
-              ],
-            ),
-            content: const Text(
-              'This is a simple alert dialog with just OK button.',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('OK'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Cancel'),
-              ),
-            ],
+      builder: (context) => AlertDialog(
+        title: Row(
+          children: const [
+            Icon(Icons.timelapse),
+            SizedBox(width: 8),
+            Text('Simple Alert'),
+          ],
+        ),
+        content: const Text(
+          'This is a simple alert dialog with just OK button.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
           ),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+        ],
+      ),
     );
   }
 
   void _showConfirmationAlert(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialog(
-            title: const Text('Confirm Action'),
-            content: const Text('Are you sure you want to proceed?'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Cancel'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(
-                      const SnackBar(content: Text('Action Confirmed')));
-                },
-                child: const Text('Confirm'),
-              ),
-            ],
+      builder: (context) => AlertDialog(
+        title: const Text('Confirm Action'),
+        content: const Text('Are you sure you want to proceed?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(const SnackBar(content: Text('Action Confirmed')));
+            },
+            child: const Text('Confirm'),
+          ),
+        ],
+      ),
     );
   }
 
   void _showChoiceAlert(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialog(
-            title: const Text('Choose Option'),
-            content: const Text('Select one option:'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _selectedOption = 'Option 1 selected';
-                  });
-                  Navigator.pop(context);
-                },
-                child: const Text('Option 1'),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _selectedOption = 'Option 2 selected';
-                  });
-                  Navigator.pop(context);
-                },
-                child: const Text('Option 2'),
-              ),
-            ],
+      builder: (context) => AlertDialog(
+        title: const Text('Choose Option'),
+        content: const Text('Select one option:'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              setState(() {
+                _selectedOption = 'Option 1 selected';
+              });
+              Navigator.pop(context);
+            },
+            child: const Text('Option 1'),
           ),
+          TextButton(
+            onPressed: () {
+              setState(() {
+                _selectedOption = 'Option 2 selected';
+              });
+              Navigator.pop(context);
+            },
+            child: const Text('Option 2'),
+          ),
+        ],
+      ),
     );
   }
 
@@ -220,46 +226,45 @@ class _TabScn1State extends State<TabScn1> {
 
     showDialog(
       context: context,
-      builder: (context) =>
-          AlertDialog(
-            title: const Text('Enter Your Name'),
-            content: TextField(
-              controller: controller,
-              decoration: const InputDecoration(
-                hintText: 'Type your name here',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('Cancel'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (controller.text.isNotEmpty) {
-                    setState(() {
-                      _selectedOption = controller.text;
-                    });
-                  }
-                  Navigator.pop(context);
-                },
-                child: const Text('Submit'),
-              ),
-            ],
+      builder: (context) => AlertDialog(
+        title: const Text('Enter Your Name'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(
+            hintText: 'Type your name here',
+            border: OutlineInputBorder(),
           ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (controller.text.isNotEmpty) {
+                setState(() {
+                  _selectedOption = controller.text;
+                });
+              }
+              Navigator.pop(context);
+            },
+            child: const Text('Submit'),
+          ),
+        ],
+      ),
     );
   }
 
   void _showAwesomeDialog(BuildContext context) {
     AwesomeDialog(
-        context: context,
-        dialogType: DialogType.info,
-        animType: AnimType.rightSlide,
-        title: 'Dialog Title',
-        desc: 'Dialog description here.............',
-        btnCancelOnPress: () {},
-    btnOkOnPress: () {},
+      context: context,
+      dialogType: DialogType.info,
+      animType: AnimType.rightSlide,
+      title: 'Dialog Title',
+      desc: 'Dialog description here.............',
+      btnCancelOnPress: () {},
+      btnOkOnPress: () {},
     ).show();
   }
 
@@ -297,6 +302,7 @@ class _TabScn1State extends State<TabScn1> {
       ),
     );
   }
+
   void _showBuildBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -322,9 +328,9 @@ class _TabScn1State extends State<TabScn1> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildShareOption("Facebook","🙎"),
-                _buildShareOption("Instagram","ℹ️"),
-                _buildShareOption("Twitter","🐤"),
+                _buildShareOption("Facebook", "🙎"),
+                _buildShareOption("Instagram", "ℹ️"),
+                _buildShareOption("Twitter", "🐤"),
               ],
             ),
           ],
@@ -380,5 +386,82 @@ class _TabScn1State extends State<TabScn1> {
     );
   }
 
+  void _showModelBottomSheetPersistent(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(10),
+        ),
+      ),
+      builder: (context) => Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                height: 10,
+                width: 30,
+                color: Colors.grey,
 
+                padding: EdgeInsets.all(20),
+              ),
+            ),
+            Text(
+              'Filter Options',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+
+            const SizedBox(height: 20),
+
+            Column(
+              children: [
+                _buildFilterOption("Price Low to High", () {
+                  setState(() => _selectedOption = "Price Low to High");
+                  Navigator.pop(context);
+                }),
+                _buildFilterOption("Price High to Low", () {
+                  setState(() => _selectedOption = "Price High to Low");
+                  Navigator.pop(context);
+                }),
+                _buildFilterOption("New to Old", () {
+                  setState(() => _selectedOption = "New to Old");
+                  Navigator.pop(context);
+                }),
+                _buildFilterOption("Old to New", () {
+                  setState(() => _selectedOption = "Old to New");
+                  Navigator.pop(context);
+                }),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
+
+  Widget _buildFilterOption(String label, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(20),
+        margin: EdgeInsets.only(bottom: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Row(
+          children: [
+            Icon(Icons.check_circle_outline, color: Colors.blue),
+            SizedBox(height: 12),
+            Text(label),
+          ],
+        ),
+      ),
+    );
+  }
+}

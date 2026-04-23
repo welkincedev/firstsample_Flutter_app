@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
+void main() =>
+    runApp(MaterialApp(debugShowCheckedModeBanner: false, home: TabScn2()));
+
 class TabScn2 extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Exit Example'),
-      ),
+      appBar: AppBar(title: const Text('Exit Example')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
